@@ -1,0 +1,22 @@
+<section id="status">
+    <article>
+        <div class="details">
+            <strong><?= $status['title'] ?></strong>
+            <p><?= $status['content'] ?></p>
+            <div class="date">
+                <div id="date">
+                    <small>Le <?= $status['createdAt'] ?></small> |
+                    <p>Auteur : <?= $status['auteur'] ?> </p>
+                </div>
+                <div class="button">
+                    <a id="red" href="index.php?controller=status&task=edit&id=<?= $status['id'] ?>">
+                        Editer
+                    </a> |
+                    <a id="blue" href="index.php?controller=status&task=delete&id=<?= $status['id'] ?>">
+                        Supprimer
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

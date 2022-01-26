@@ -1,0 +1,31 @@
+<section id="status">
+
+    <div class="add">
+        <h2>Articles</h2>
+        <a href="index.php?controller=status&task=add"><img src="./images/croix-verte.png" alt="logo croix verte"></a>
+    </div>
+    <?php foreach ($status as $stat) : ?>
+        <article>
+            <div class="details">
+                <strong><?= $stat['title'] ?></strong>
+                <p><?= $stat['content'] ?></p>
+                <div class="metadata">
+                    <div class="date">
+                        <div id="date">
+                            <small>Le <?= $stat['createdAt'] ?></small> |
+                            <p>Auteur : <?= $stat['auteur'] ?> </p>
+                        </div>
+                        <div class="button">
+                            <a id="red" href="index.php?controller=status&task=show&id=<?= $stat['id'] ?>">
+                                Voir
+                            </a> |
+                            <a id="blue" href="index.php?controller=status&task=delete&id=<?= $stat['id'] ?>">
+                                Supprimer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    <?php endforeach ?>
+</section>
