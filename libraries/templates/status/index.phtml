@@ -2,12 +2,24 @@
 
     <div class="add">
         <h2>Articles</h2>
+        <form action="index.php?controller=status&task=select" method="POST" id="write-status">
+            <select name="select">
+                <option value="1">GDG</option>
+                <option value="2">DFG</option>
+                <option value="3">vOITUEE</option>
+            </select>
+            <button type="submit">
+                <i class="fas fa-volume-up"></i>
+                Envoyer
+            </button>
+        </form>
         <a href="index.php?controller=status&task=add"><img src="./images/croix-verte.png" alt="logo croix verte"></a>
     </div>
     <?php foreach ($status as $stat) : ?>
         <article>
             <div class="details">
                 <strong><?= $stat['title'] ?></strong>
+                <p><?= $stat['nom'] ?></p>
                 <p><?= $stat['content'] ?></p>
                 <div class="metadata">
                     <div class="date">

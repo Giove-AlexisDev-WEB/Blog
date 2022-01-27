@@ -30,31 +30,20 @@ if (!file_exists($chemin)) {
 
 require_once $chemin;
 
+$controller = new $controllerName();
 
-try {
-
-    $controller = new $controllerName();
-
-    $task = Request::get('task');
+$task = Request::get('task');
 
 
-    if (!$task) {
+if (!$task) {
 
-        $task = "index";
-    }
-
-
-    if (!method_exists($controller, $task)) {
-        Http::redirect("index.php");
-    }
-
-
-    $controller->$task();
-} catch (Exception $e) {
-    // Si il y a eu la moindre erreur :
-    $code = $e->getCode();
-    $message = $e->getMessage();
-    require_once dirname(__FILE__) . '/../templates/partials/header.phtml';
-    require_once dirname(__FILE__) . "/../templates/$template.phtml";
-    require_once dirname(__FILE__) . '/../templates/partials/footer.phtml';
+    $task = "index";
 }
+
+
+if (!method_exists($controller, $task)) {
+    Http::redirect("index.php");
+}
+
+
+$controller->$task();

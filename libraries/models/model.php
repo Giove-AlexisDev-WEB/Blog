@@ -126,4 +126,15 @@ abstract class Model
 
         $query->execute(['id' => $id]);
     }
+
+    public function findAllByCategorieId(int $id): array
+    {
+        $query = $this->db->prepare('
+            SELECT * FROM status WHERE categorie_id = id;
+        ');
+
+        $query->execute(['id' => $id]);
+
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -8,7 +8,6 @@ class StatusController extends Controller
 
     public function index()
     {
-
         $status = $this->model->findAll();
 
         $this->view('status/index', [
@@ -82,18 +81,34 @@ class StatusController extends Controller
         $title = Request::get('title', Request::SAFE);
         $content = Request::get('content', Request::SAFE);
         $auteur = Request::get('auteur', Request::SAFE);
+        $categorie = Request::get('select', Request::SAFE);
 
         $data = [
             'title' => $title,
             'content' => $content,
             'createdAt' => date('Y-m-d H:i:s'),
             'auteur' => $auteur,
+            'categorie_id' => $categorie,
         ];
 
         $this->model->insert($data);
 
         $this->view('status/index', [
             'status' => $status,
+        ]);
+    }
+
+    public function select()
+    {
+        $status = $this->model->findAll();
+        $categorie = Request::get('select', Request::SAFE);
+
+        $this->model->findAllByCategorieId($categorie);
+
+        $this->view('status/index', [
+            'status' => $status,
+            'id' => $categorie,
+
         ]);
     }
 
